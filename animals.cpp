@@ -8,9 +8,6 @@ struct Animal{
     Animal *p_no = nullptr;
 
         ~Animal(){
-            std::cout << "Deleting " << answear << std::endl;
-            std::cout <<"Yes " << p_yes << std::endl;
-            std::cout <<"No " << p_no << std::endl;
             if (p_yes) delete p_yes;
             if (p_no) delete p_no;
         }
@@ -50,25 +47,19 @@ int main(){
                     std::cout << "I am win!!!" << std::endl;
                     break;
                 }
-                else {
+                else 
                     if (current->p_yes == nullptr) {
                         current->p_yes = create(current->answear);
                         break;
                     }
-                    else {
-                        current = current->p_yes;
-                    }
-                }
+                    else current = current->p_yes;
             }
-            else {
+            else 
                 if (current->p_no == nullptr) {
                     current->p_no = create(current->answear);
                     break;
                 }
-                else {
-                    current = current->p_no;
-                }
-            }
+                else current = current->p_no;
         }
         std::cout << "Continue?" << std::endl;
         if (yes()) continue; else break;
