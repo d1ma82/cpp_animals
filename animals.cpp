@@ -36,7 +36,7 @@ Animal* create(std::string current_answear){
 int main(){
     Animal init {"it catch mice?", "cat", nullptr, nullptr};
     
-    while (true) {
+    do {
         Animal *current = &init;
         std::cout << "Think an animal, and I will try to guess by asking leading questions." << std::endl;
         while (true) {
@@ -59,9 +59,8 @@ int main(){
                     current->p_no = create(current->answear);
                     break;
                 }
-                else current = current->p_no;
+                else current = current->p_no;    
         }
-        std::cout << "Continue?" << std::endl;
-        if (yes()) continue; else break;
-    }
+        std::cout << "Continue?" << std::endl;     
+    } while (yes());
 }
