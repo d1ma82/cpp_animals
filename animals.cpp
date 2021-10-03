@@ -1,4 +1,4 @@
-// Тестирование русских букв
+п»ї// РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЂСѓСЃСЃРєРёС… Р±СѓРєРІ
 #include<iostream>
 #include<string>
 #include <sstream>
@@ -26,9 +26,9 @@ bool yes(){
     return ch == 'y';
 }
 /**
-    * создает экземпляр
+    * СЃРѕР·РґР°РµС‚ СЌРєР·РµРјРїР»СЏСЂ
     *
-    * @param string current_answear, ответ на уточняющий вопрос
+    * @param string current_answear, РѕС‚РІРµС‚ РЅР° СѓС‚РѕС‡РЅСЏСЋС‰РёР№ РІРѕРїСЂРѕСЃ
 */
 Animal* create(string current_answear){
     Animal *result = new Animal();
