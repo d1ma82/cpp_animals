@@ -1,3 +1,4 @@
+// Тестирование русских букв
 #include<iostream>
 #include<string>
 #include <sstream>
