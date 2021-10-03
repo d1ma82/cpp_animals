@@ -1,9 +1,12 @@
 #include<iostream>
 #include<string>
+#include <sstream>
+
+using namespace std;
 
 struct Animal{
-    std::string question = "";
-    std::string answear = "";
+    string question = "";
+    string answear = "";
     Animal *p_yes = nullptr;
     Animal *p_no = nullptr;
 
@@ -15,21 +18,37 @@ struct Animal{
 
 bool yes(){
     char ch;
-    std::cin >> ch;
+    cin.clear();
+    cin.sync();
+    cin >> ch;
 
     return ch == 'y';
 }
-
-Animal* create(std::string current_answear){
+/**
+    * создает экземпл€р
+    *
+    * @param string current_answear, ответ на уточн€ющий вопрос
+*/
+Animal* create(string current_answear){
     Animal *result = new Animal();
-    std::cin.clear();
-    std::cin.sync();
-    std::cout << "OK! Who is it?" << std::endl;
-    std::getline(std::cin, result->answear);
+    stringstream strings;
+    string str;
+    cin.clear();
+    cin.sync();
+    cout << "OK! Who is it?" << std::endl;
+    while (getline(std::cin, str)) { strings << str; };
+    result->answear = strings.str();
     //std::cin >> result->answear;
-    std::cout << "What the difference between " << result->answear << " and " << current_answear << std::endl;
-    std::getline(std::cin, result->question);
+    cout << "What the difference between " << result->answear << " and " << current_answear << std::endl;
+    //std::getline(std::cin, result->question);
+    strings.str("");
+    strings.clear();
+    cin.clear();
+    cin.sync();
+    while (getline(std::cin, str)){ strings << str; };
+    result->question = strings.str();
     result->question.append("?");
+
     return result;
 }
 
@@ -38,13 +57,13 @@ int main(){
     
     do {
         Animal *current = &init;
-        std::cout << "Think an animal, and I will try to guess by asking leading questions." << std::endl;
+        cout << "Think an animal, and I will try to guess by asking leading questions." << std::endl;
         while (true) {
-            std::cout << current->question << std::endl;
+            cout << current->question << std::endl;
             if (yes()) {
-                std::cout << "This is " << current->answear << ". Guess?" << std::endl;
+                cout << "This is " << current->answear << ". Guess?" << std::endl;
                 if (yes()) {
-                    std::cout << "I am win!!!" << std::endl;
+                    cout << "I am win!!!" << std::endl;
                     break;
                 }
                 else 
@@ -61,6 +80,6 @@ int main(){
                 }
                 else current = current->p_no;    
         }
-        std::cout << "Continue?" << std::endl;     
+        cout << "Continue?" << std::endl;     
     } while (yes());
 }
